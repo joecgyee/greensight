@@ -1,0 +1,13 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h2>Confirm Delete</h2>
+  <p>Are you sure you want to delete usage data for: <strong>{{ object.household_id }}</strong>?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <a href="{% url 'usage_detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+{% endblock %}

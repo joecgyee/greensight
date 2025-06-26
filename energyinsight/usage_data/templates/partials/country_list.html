@@ -1,0 +1,7 @@
+<!-- Dropdown menu -->
+<select class="form-select" onchange="location = this.value;">
+  <option disabled selected>Country Filter</option>
+  {% for country in countries %}
+    <option value="{% url 'usage_by_country' country.name %}">{{ country.name }}</option>
+  {% endfor %}
+</select>

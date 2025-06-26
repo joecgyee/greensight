@@ -1,0 +1,139 @@
+{% extends "./base.html" %} 
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="row mb-5">
+    <div class="col-lg-12 mx-auto">
+      <!-- Section: All Usage Data -->
+      <div class="mb-4">
+        <h2>All Usage Data</h2>
+        <a href="/list" class="btn btn-outline-primary btn-sm"
+          >View all usage data</a
+        >
+      </div>
+
+      <!-- Section: Create New Data -->
+      <div class="mb-4">
+        <h2>Create New Data</h2>
+        <a href="/usagedata/create/" class="btn btn-outline-success btn-sm"
+          >Add new usage data entry</a
+        >
+      </div>
+
+      <!-- Section: API Table -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <h2>APIs</h2>
+          <table
+            class="table table-bordered table-hover align-middle table-responsive"
+          >
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Method</th>
+                <th scope="col">Endpoint</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge bg-primary">GET</span>
+                  <span class="badge bg-success">POST</span>
+                </td>
+                <td>
+                  <a href="/api/usagedata/" target="_blank">/api/usagedata/</a>
+                </td>
+                <td>
+                  Return all energy usage data and allow creating new entries via the form below
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-primary">GET</span>
+                  <span class="badge bg-warning text-dark">PUT</span>
+                  <span class="badge bg-danger">DELETE</span>
+                </td>
+                <td>
+                  <a href="/api/usagedata/1" target="_blank"
+                    >/api/usagedata/&lt;id&gt;</a
+                  >
+                  <p>(e.g. id=1)</p>
+                </td>
+                <td>
+                  Retrieve, update, or delete energy usage by specified ID (pk)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-primary">GET</span>
+                  <span class="badge bg-warning text-dark">PUT</span>
+                  <span class="badge bg-danger">DELETE</span>
+                </td>
+                <td>
+                  <a href="/api/usagedata/hhid/H00123" target="_blank"
+                    >/api/usagedata/hhid/&lt;household_id&gt;</a
+                  >
+                  <p>(e.g. H00123)</p>
+                </td>
+                <td>
+                  Retrieve, update, or delete energy usage by household ID 
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-primary">GET</span></td>
+                <td><a href="/api/source" target="_blank">/api/source</a></td>
+                <td>Return all renewable energy sources</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-primary">GET</span>
+                  <span class="badge bg-success">POST</span>
+                </td>
+                <td><a href="/api/country" target="_blank">/api/country</a></td>
+                <td>Return all registered countries and allow creating new country via the form below</td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-primary">GET</span></td>
+                <td>
+                  <a href="/api/usagedata/country/UK" target="_blank"
+                    >/api/usagedata/country/&lt;country_name&gt;</a
+                  >
+                  <p>(e.g. UK)</p>
+                </td>
+                <td>
+                  Return energy usage records filtered by country name
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-primary">GET</span></td>
+                <td>
+                  <a href="/api/usagedata/source/Solar" target="_blank"
+                    >/api/usagedata/source/&lt;source_name&gt;</a
+                  >
+                  <p>(e.g. Solar)</p>
+                </td>
+                <td>
+                  Return energy usage records filtered by energy source name
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-primary">GET</span></td>
+                <td>
+                  <a href="/api/costsavings/Japan" target="_blank">
+                    /api/costsavings/&lt;country_name&gt;
+                  </a>
+                  <p>(e.g. Japan)</p>
+                </td>
+                <td>
+                  Return total cost savings for each energy source by specified country
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

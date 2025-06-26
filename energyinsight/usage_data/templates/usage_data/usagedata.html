@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="container my-5">
+
+  <h1>{{ usage_data }}</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr><th>Field</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Household ID</td><td>{{ usage_data.household_id }}</td></tr>
+      <tr><td>Country</td><td>{{ usage_data.country.name }}</td></tr>
+      <tr><td>Region</td><td>{{ usage_data.country.region.name }}</td></tr>
+      <tr><td>Energy Source</td><td>{{ usage_data.energy_source.name }}</td></tr>
+      <tr><td>Monthly Usage (kWh)</td><td>{{ usage_data.monthly_usage_kwh }}</td></tr>
+      <tr><td>Year</td><td>{{ usage_data.year }}</td></tr>
+      <tr><td>Household Size</td><td>{{ usage_data.household_size }}</td></tr>
+      <tr><td>Income Level</td><td>{{ usage_data.income_level.level }}</td></tr>
+      <tr><td>Urban/Rural</td><td>{{ usage_data.urban_rural.type }}</td></tr>
+      <tr><td>Adoption Year</td><td>{{ usage_data.adoption_year }}</td></tr>
+      <tr><td>Subsidy Received</td><td>{{ usage_data.subsidy_received }}</td></tr>
+      <tr><td>Cost Savings (USD)</td><td>{{ usage_data.cost_savings_usd }}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-end gap-2 mt-4">
+    <a href="{% url 'usage_update' usage_data.pk %}" class="btn btn-primary">UPDATE RECORD</a>
+    <a href="{% url 'usage_delete' usage_data.pk %}" class="btn btn-danger">DELETE RECORD</a>
+    <a href="/" class="btn btn-secondary">CANCEL</a>
+  </div>
+  
+</div>
+
+
+{% endblock %}

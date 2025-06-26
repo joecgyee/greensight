@@ -1,0 +1,78 @@
+{% load bootstrap5 %}
+{% load static %}
+{% load my_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Global Renewable Energy Usage (2020-2024)">
+    <meta name="keywords" content="renewable,energy,usage,web">
+    <meta name="author" content="Joe C.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
+    
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usage_data.css' %}">
+    <title>Greensight</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-md sticky-top flex-column">
+  <div class="w-100 d-flex align-items-center px-3">
+    <img src="{% static 'image/greensight-high-resolution-logo-transparent.png' %}" 
+         id="logo" alt="greensight logo" width="200" height="40" class="me-3">
+    <h1 id="application_title" class="mb-0">Global Renewable Energy Usage Data</h1>
+  </div>
+
+  <div class="w-100 d-flex px-3">
+    <ul class="navbar-nav mr-auto" id="navigation">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://www.ebi.ac.uk/">EBI</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://www.uniprot.org/">Uniprot</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-4" id="source_list">
+        {% energy_sources %}
+    </div>
+    
+    <div class="col-4" id="country_list">
+        {% countries %}
+    </div>
+
+    <div class="col-8" id="main_content">
+      {% block content %}
+        <p>Didn't render content</p>
+      {% endblock %}
+    </div>
+
+  </div>
+</div>
+
+{% load my_tags %}
+{% load bootstrap5 %}
+<footer>
+
+    <div class="col-md-8" id="footer">
+        <p>Author: Joe C. Date:  {% todays_date %}.</p>
+        <a href="https://www.kaggle.com/datasets/hajraamir21/global-renewable-energy-usage-2020-2024" target="_blank">
+            Source
+        </a>
+    </div>
+
+</footer>
+</body>
+</html>

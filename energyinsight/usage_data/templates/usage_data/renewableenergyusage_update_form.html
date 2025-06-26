@@ -1,0 +1,16 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="container my-5">
+
+  <h2>Update Usage Data</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="Save Changes" class="btn btn-primary">
+    <a href="{% url 'usage_detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+  </form>
+
+</div>
+{% endblock %}

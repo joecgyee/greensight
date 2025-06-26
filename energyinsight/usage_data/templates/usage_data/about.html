@@ -1,0 +1,42 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="container my-5">
+    
+    <h2 class="mb-5">System Information</h2>
+    <div class="mb-5">
+        <h5>Versions</h5>
+        <ul class="list-unstyled">
+            <li>Python: 3.13.2</li>
+            <li>Django: 4.2.23</li>
+        </ul>
+    </div>
+    <div>
+        <h5>Installed Packages</h5>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>asgiref==3.8.1</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>beautifulsoup4==4.13.4</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>distlib==0.3.9</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>Django==4.2.23</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>django-bootstrap-v5==1.0.11</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>djangorestframework==3.16.0</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>factory_boy==3.3.3</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>Faker==37.4.0</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>filelock==3.18.0</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>pbr==6.1.1</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>platformdirs==4.3.8</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>setuptools==80.9.0</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>soupsieve==2.7</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>sqlparse==0.5.3</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>stevedore==5.4.1</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>typing_extensions==4.14.0</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>tzdata==2025.2</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenv==20.31.2</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenv-clone==0.5.7</code></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenvwrapper==6.1.1</code></div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

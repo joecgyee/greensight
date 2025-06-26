@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h2 class="mb-4">Add New Usage Data</h2>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form action="/usagedata/create/" method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+
+                <!-- Render form using bootstrap5 -->
+                {% bootstrap_form form layout='vertical' show_label=True %}
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                    <a href="/" class="btn btn-secondary btn-lg mt-3">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

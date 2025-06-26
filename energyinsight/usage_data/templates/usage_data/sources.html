@@ -1,0 +1,46 @@
+{% extends "./base.html" %} {% load bootstrap5 %} {% block content %}
+
+<div class="container my-5">
+  <h2>Registered Renewable Energy Sources</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Energy Source</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for source in sources %}
+      <tr>
+        <td>{{ source.name }}</td>
+        <td>
+          <form
+            action="{% url 'sources' %}"
+            method="post"
+            style="display: inline"
+          >
+            {% csrf_token %}
+            <input type="hidden" name="delete_id" value="{{ source.id }}" />
+            <button
+              type="submit"
+              class="btn btn-danger btn-sm"
+              onclick="return confirm('Are you sure you want to delete {{ source.name }}?');"
+            >
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br />
+
+  <h2>Add new energy source</h2>
+  <form action="{% url 'sources' %}" method="post" class="form">
+    {% csrf_token %} {% bootstrap_form form %}
+    <input type="submit" value="Add" class="btn btn-primary" />
+  </form>
+</div>
+{% endblock %}

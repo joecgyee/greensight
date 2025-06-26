@@ -1,0 +1,30 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md sticky-top flex-column">
+
+  <div class="w-100 d-flex align-items-center px-3">
+    <a href="/">
+      <img src="{% static 'images/greensight-high-resolution-logo-transparent.png' %}" 
+           id="logo" alt="greensight logo" width="150" height="30" class="me-3">
+    </a>
+    <h1 id="application_title" class="mb-0">Global Renewable Energy Usage Data</h1>
+  </div>
+
+  <div class="w-100 d-flex px-3">
+    <ul class="navbar-nav mr-auto" id="navigation">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/countries/">Country</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/sources/">Energy</a>
+      </li>
+      <li>
+        <a class="nav-link" href="/admin_credentials/">Admin</a>
+      </li>
+    </ul>
+  </div>
+  
+</nav>

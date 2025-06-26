@@ -1,0 +1,38 @@
+{% load my_tags %}
+{% include "./header.html" %}
+{% include "./title.html" %}
+
+<div class="container-fluid">
+  <div class="row justify-content-center" id="filters_and_searchbox">
+    
+    <!-- Filters -->
+    <div class="col-md-4 mt-3">
+      {% energy_sources %}
+    </div>
+    
+    <div class="col-md-4 mt-3">
+      {% countries %}
+    </div>
+
+    <!-- Search Form -->
+    <div class="col-md-8 my-3">
+      <form method="get" action="{% url 'usage_search' %}" class="d-flex">
+        <input type="text" name="q" class="form-control me-2" placeholder="household ID, country, or energy source">
+        <button type="submit" class="btn btn-outline-secondary">Search</button>
+      </form>
+    </div>
+
+  </div>
+
+    <!-- Main Content -->
+    <div class="row justify-content-center">
+      <div class="col-md-16" id="main_content">
+        {% block content %}
+          <p>Didn't render content</p>
+        {% endblock %}
+      </div>
+    </div>
+
+</div>
+
+{% include "./footer.html" %}

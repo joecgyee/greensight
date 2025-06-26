@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container my-5">
+
+    <h1>Search Results for "{{ query }}"</h1>
+    
+    <table class="table table-striped table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>Household ID</th>
+          <th>Country</th>
+          <th>Energy Source</th>
+          <th>Monthly Usage (kWh)</th>
+          <th>Year</th>
+          <th>Household Size</th>
+          <th>Income Level</th>
+          <th>Urban/Rural</th>
+          <th>Adoption Year</th>
+          <th>Subsidy</th>
+          <th>Cost Savings (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usage in search_results %}
+          <tr>
+            <td><a href="{% url 'usage_detail' usage.pk %}">{{ usage.household_id }}</a></td>
+            <td>{{ usage.country.name }}</td>
+            <td>{{ usage.energy_source.name }}</td>
+            <td>{{ usage.monthly_usage_kwh }}</td>
+            <td>{{ usage.year }}</td>
+            <td>{{ usage.household_size }}</td>
+            <td>{{ usage.income_level.level }}</td>
+            <td>{{ usage.urban_rural.type }}</td>
+            <td>{{ usage.adoption_year }}</td>
+            <td>{{ usage.subsidy_received }}</td>
+            <td>{{ usage.cost_savings_usd }}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="11">No matching results found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
