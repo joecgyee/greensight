@@ -115,7 +115,7 @@ class UsageDataUpdate(UpdateView):
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
-        return reverse_lazy('usage-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('usage_detail', kwargs={'pk': self.object.pk})
         
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
@@ -127,7 +127,7 @@ class UsageDataCreate(CreateView):
     form_class = UsageDataForm
 
     def get_success_url(self):
-        return reverse_lazy('usage-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('usage_detail', kwargs={'pk': self.object.pk})
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
