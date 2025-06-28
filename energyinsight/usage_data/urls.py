@@ -11,8 +11,10 @@ urlpatterns = [
     path('list/', views.UsageDataList.as_view(), name='usage_all'),
     path('list/country/<str:country>/', views.UsageDataList.as_view(), name='usage_by_country'),
     path('list/source/<str:source>/', views.UsageDataList.as_view(), name='usage_by_source'),
+
     path('countries/', views.countries, name='countries'),
     path('sources/', views.sources, name='sources'),
+    
     path('usagedata/<int:pk>/', views.UsageDataDetail.as_view(), name='usage_detail'),
     path('usagedata/delete/<int:pk>/', views.UsageDataDelete.as_view(), name='usage_delete'),
     path('usagedata/update/<int:pk>/', views.UsageDataUpdate.as_view(), name='usage_update'),
@@ -27,6 +29,7 @@ urlpatterns = [
     path('api/source/', api.EnergySourceList.as_view(), name='source_list_api'),
     path('api/country/', api.CountryList.as_view(), name='country_list_api'),
     path('api/costsavings/<str:country_name>/', api.TotalSavingsByCountry.as_view(), name='total_savings_country_api'),
+
     path('app/', views.SPA, name="spa"),
 
 ]
