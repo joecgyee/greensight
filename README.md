@@ -34,3 +34,15 @@ python scripts/populate_greensight.py
 
 # Run the development server
 python manage.py runserver
+```
+
+## Running Tests
+
+```bash
+# Run all tests
+python manage.py test
+
+# Running specific test classes or methods
+python manage.py test usage_data.tests.APITests
+python manage.py test usage_data.tests.APITests.test_usage_data_list_api
+```
