@@ -1,40 +1,62 @@
 {% extends "./base.html" %}
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
+
+{% block title %}System Information{% endblock %}
 
 {% block content %}
 <div class="container my-5">
-    
-    <h2 class="mb-5">System Information</h2>
+
+    <h2 class="mb-4">System Information</h2>
+
+    <!-- Versions -->
     <div class="mb-5">
-        <h5>Versions</h5>
-        <ul class="list-unstyled">
-            <li>Python: 3.13.2</li>
-            <li>Django: 4.2.23</li>
-        </ul>
+        <h5 class="mb-3">Versions</h5>
+        <div class="d-flex flex-wrap gap-2">
+            <span class="version-badge">
+                <span class="version-label">Python</span>
+                <span class="version-value">3.13.2</span>
+            </span>
+            <span class="version-badge">
+                <span class="version-label">Django</span>
+                <span class="version-value">6.1.1</span>
+            </span>
+            <span class="version-badge">
+                <span class="version-label">Django REST Framework</span>
+                <span class="version-value">3.18.1</span>
+            </span>
+        </div>
     </div>
+
+    <!-- Installed packages -->
     <div>
-        <h5>Installed Packages</h5>
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>asgiref==3.8.1</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>beautifulsoup4==4.13.4</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>distlib==0.3.9</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>Django==4.2.23</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>django-bootstrap-v5==1.0.11</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>djangorestframework==3.16.0</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>factory_boy==3.3.3</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>Faker==37.4.0</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>filelock==3.18.0</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>pbr==6.1.1</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>platformdirs==4.3.8</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>setuptools==80.9.0</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>soupsieve==2.7</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>sqlparse==0.5.3</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>stevedore==5.4.1</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>typing_extensions==4.14.0</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>tzdata==2025.2</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenv==20.31.2</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenv-clone==0.5.7</code></div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-2"><code>virtualenvwrapper==6.1.1</code></div>
+        <h5 class="mb-3">Installed Packages</h5>
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <div class="pkg-grid">
+                    <span class="pkg-chip">asgiref<span class="pkg-version">==3.12.1</span></span>
+                    <span class="pkg-chip">beautifulsoup4<span class="pkg-version">==4.13.4</span></span>
+                    <span class="pkg-chip">distlib<span class="pkg-version">==0.3.9</span></span>
+                    <span class="pkg-chip">Django<span class="pkg-version">==6.1.1</span></span>
+                    <span class="pkg-chip">django-bootstrap-v5<span class="pkg-version">==1.0.11</span></span>
+                    <span class="pkg-chip">django-bootstrap5<span class="pkg-version">==26.3</span></span>
+                    <span class="pkg-chip">djangorestframework<span class="pkg-version">==3.18.1</span></span>
+                    <span class="pkg-chip">factory_boy<span class="pkg-version">==3.3.3</span></span>
+                    <span class="pkg-chip">Faker<span class="pkg-version">==37.4.0</span></span>
+                    <span class="pkg-chip">filelock<span class="pkg-version">==3.18.0</span></span>
+                    <span class="pkg-chip">packaging<span class="pkg-version">==25.0</span></span>
+                    <span class="pkg-chip">pbr<span class="pkg-version">==6.1.1</span></span>
+                    <span class="pkg-chip">platformdirs<span class="pkg-version">==4.3.8</span></span>
+                    <span class="pkg-chip">setuptools<span class="pkg-version">==80.9.0</span></span>
+                    <span class="pkg-chip">soupsieve<span class="pkg-version">==2.7</span></span>
+                    <span class="pkg-chip">sqlparse<span class="pkg-version">==0.5.3</span></span>
+                    <span class="pkg-chip">stevedore<span class="pkg-version">==5.4.1</span></span>
+                    <span class="pkg-chip">typing_extensions<span class="pkg-version">==4.14.0</span></span>
+                    <span class="pkg-chip">tzdata<span class="pkg-version">==2025.2</span></span>
+                    <span class="pkg-chip">virtualenv<span class="pkg-version">==20.31.2</span></span>
+                    <span class="pkg-chip">virtualenv-clone<span class="pkg-version">==0.5.7</span></span>
+                    <span class="pkg-chip">virtualenvwrapper<span class="pkg-version">==6.1.1</span></span>
+                </div>
+            </div>
         </div>
     </div>
 

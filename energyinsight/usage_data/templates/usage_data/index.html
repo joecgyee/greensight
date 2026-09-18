@@ -1,133 +1,118 @@
-{% extends "./base.html" %} 
+{% extends "./base.html" %}
 
 {% block content %}
 
 <div class="container my-4">
-  <div class="row mb-5">
-    <div class="col-lg-12 mx-auto">
-      <!-- Section: All Usage Data -->
-      <div class="mb-4">
-        <h2>All Usage Data</h2>
-        <a href="/list" class="btn btn-outline-primary btn-sm"
-          >View all usage data</a
-        >
-      </div>
 
-      <!-- Section: Create New Data -->
-      <div class="mb-4">
-        <h2>Create New Data</h2>
-        <a href="/usagedata/create/" class="btn btn-outline-success btn-sm"
-          >Add new usage data entry</a
-        >
-      </div>
+  <!-- Hero -->
+  <div class="page-hero mb-5">
+    <h1>Greensight</h1>
+    <p>Track household adoption of renewable energy across countries and sources, from solar uptake to the cost savings it delivers.</p>
+  </div>
 
-      <!-- Section: API Table -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <h2>APIs</h2>
-          <table
-            class="table table-bordered table-hover align-middle table-responsive"
-          >
-            <thead class="table-light">
+  <!-- Action tiles -->
+  <div class="row g-3 mb-5">
+    <div class="col-md-6">
+      <a href="/list" class="action-tile">
+        <div class="action-tile-icon">&#9776;</div>
+        <h3>All usage data</h3>
+        <p>Browse every household record, filterable by country or energy source.</p>
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="/usagedata/create/" class="action-tile">
+        <div class="action-tile-icon">&#43;</div>
+        <h3>Add a new entry</h3>
+        <p>Log a new household's usage, adoption year, and cost savings.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- API reference -->
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-3">API Reference</h2>
+      <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
               <tr>
-                <th scope="col">Method</th>
-                <th scope="col">Endpoint</th>
+                <th scope="col" style="width: 14%;">Method</th>
+                <th scope="col" style="width: 32%;">Endpoint</th>
                 <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <span class="badge bg-primary">GET</span>
-                  <span class="badge bg-success">POST</span>
+                  <span class="method-chip method-get">GET</span>
+                  <span class="method-chip method-post">POST</span>
                 </td>
-                <td>
+                <td class="api-endpoint">
                   <a href="/api/usagedata/" target="_blank">/api/usagedata/</a>
                 </td>
-                <td>
-                  Return all energy usage data and allow creating new entries via the form below
-                </td>
+                <td>Return all energy usage data and allow creating new entries via the form below</td>
               </tr>
               <tr>
                 <td>
-                  <span class="badge bg-primary">GET</span>
-                  <span class="badge bg-warning text-dark">PUT</span>
-                  <span class="badge bg-danger">DELETE</span>
+                  <span class="method-chip method-get">GET</span>
+                  <span class="method-chip method-put">PUT</span>
+                  <span class="method-chip method-delete">DELETE</span>
                 </td>
-                <td>
-                  <a href="/api/usagedata/1" target="_blank"
-                    >/api/usagedata/&lt;id&gt;</a
-                  >
-                  <p>(e.g. id=1)</p>
+                <td class="api-endpoint">
+                  <a href="/api/usagedata/1" target="_blank">/api/usagedata/&lt;id&gt;</a>
+                  <div class="text-muted small">e.g. id=1</div>
                 </td>
-                <td>
-                  Retrieve, update, or delete energy usage by specified ID (pk)
-                </td>
+                <td>Retrieve, update, or delete energy usage by specified ID (pk)</td>
               </tr>
               <tr>
                 <td>
-                  <span class="badge bg-primary">GET</span>
-                  <span class="badge bg-warning text-dark">PUT</span>
-                  <span class="badge bg-danger">DELETE</span>
+                  <span class="method-chip method-get">GET</span>
+                  <span class="method-chip method-put">PUT</span>
+                  <span class="method-chip method-delete">DELETE</span>
                 </td>
-                <td>
-                  <a href="/api/usagedata/hhid/H00123" target="_blank"
-                    >/api/usagedata/hhid/&lt;household_id&gt;</a
-                  >
-                  <p>(e.g. H00123)</p>
+                <td class="api-endpoint">
+                  <a href="/api/usagedata/hhid/H00123" target="_blank">/api/usagedata/hhid/&lt;household_id&gt;</a>
+                  <div class="text-muted small">e.g. H00123</div>
                 </td>
-                <td>
-                  Retrieve, update, or delete energy usage by household ID 
-                </td>
+                <td>Retrieve, update, or delete energy usage by household ID</td>
               </tr>
               <tr>
-                <td><span class="badge bg-primary">GET</span></td>
-                <td><a href="/api/source" target="_blank">/api/source</a></td>
+                <td><span class="method-chip method-get">GET</span></td>
+                <td class="api-endpoint"><a href="/api/source" target="_blank">/api/source</a></td>
                 <td>Return all renewable energy sources</td>
               </tr>
               <tr>
                 <td>
-                  <span class="badge bg-primary">GET</span>
-                  <span class="badge bg-success">POST</span>
+                  <span class="method-chip method-get">GET</span>
+                  <span class="method-chip method-post">POST</span>
                 </td>
-                <td><a href="/api/country" target="_blank">/api/country</a></td>
+                <td class="api-endpoint"><a href="/api/country" target="_blank">/api/country</a></td>
                 <td>Return all registered countries and allow creating new country via the form below</td>
               </tr>
               <tr>
-                <td><span class="badge bg-primary">GET</span></td>
-                <td>
-                  <a href="/api/usagedata/country/UK" target="_blank"
-                    >/api/usagedata/country/&lt;country_name&gt;</a
-                  >
-                  <p>(e.g. UK)</p>
+                <td><span class="method-chip method-get">GET</span></td>
+                <td class="api-endpoint">
+                  <a href="/api/usagedata/country/UK" target="_blank">/api/usagedata/country/&lt;country_name&gt;</a>
+                  <div class="text-muted small">e.g. UK</div>
                 </td>
-                <td>
-                  Return energy usage records filtered by country name
-                </td>
+                <td>Return energy usage records filtered by country name</td>
               </tr>
               <tr>
-                <td><span class="badge bg-primary">GET</span></td>
-                <td>
-                  <a href="/api/usagedata/source/Solar" target="_blank"
-                    >/api/usagedata/source/&lt;source_name&gt;</a
-                  >
-                  <p>(e.g. Solar)</p>
+                <td><span class="method-chip method-get">GET</span></td>
+                <td class="api-endpoint">
+                  <a href="/api/usagedata/source/Solar" target="_blank">/api/usagedata/source/&lt;source_name&gt;</a>
+                  <div class="text-muted small">e.g. Solar</div>
                 </td>
-                <td>
-                  Return energy usage records filtered by energy source name
-                </td>
+                <td>Return energy usage records filtered by energy source name</td>
               </tr>
               <tr>
-                <td><span class="badge bg-primary">GET</span></td>
-                <td>
-                  <a href="/api/costsavings/Japan" target="_blank">
-                    /api/costsavings/&lt;country_name&gt;
-                  </a>
-                  <p>(e.g. Japan)</p>
+                <td><span class="method-chip method-get">GET</span></td>
+                <td class="api-endpoint">
+                  <a href="/api/costsavings/Japan" target="_blank">/api/costsavings/&lt;country_name&gt;</a>
+                  <div class="text-muted small">e.g. Japan</div>
                 </td>
-                <td>
-                  Return total cost savings for each energy source by specified country
-                </td>
+                <td>Return total cost savings for each energy source by specified country</td>
               </tr>
             </tbody>
           </table>
@@ -135,5 +120,6 @@
       </div>
     </div>
   </div>
+
 </div>
 {% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid px-3 px-md-4">
+
+    <a class="navbar-brand d-flex align-items-center gap-2 py-0" href="/">
+      <img src="{% static 'images/greensight-high-resolution-logo-transparent.png' %}"
+           id="logo" alt="Greensight logo" height="34">
+    </a>
+    <span id="application_title">Global Renewable Energy Dashboard</span>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNav" aria-controls="mainNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0" id="navigation">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if '/countries' in request.path %}active{% endif %}" href="/countries/">Country</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if '/sources' in request.path %}active{% endif %}" href="/sources/">Energy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/" target="_blank">Admin</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

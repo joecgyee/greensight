@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'joecgyee.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'bootstrap5',
+    'django_bootstrap5',
     'rest_framework',
     'usage_data.apps.UsageDataConfig',
     'django.contrib.admin',

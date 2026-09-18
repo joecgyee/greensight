@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --forest: #3F4F44;
+    --forest-dark: #33403A;
+    --clay: #A27B5C;
+    --ember: #CA7842;
+    --linen: #DCD7C9;
+    --cream: #FDFAF6;
+    --ink: #2B2B28;
+    --rust: #8C3B2E;
+    --rust-dark: #742F24;
+
+    --radius: 10px;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    margin: 0; /* remove default margin */
+    min-height: 100vh; /* full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    font-family: 'Fraunces', 'Trebuchet MS', serif;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+main {
+    flex: 1;
+}
+
+#main_content {
+    flex: 1 0 auto; /* This pushes the footer to the bottom */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cream);
+}
+
+
+#filters_and_searchbox {
+    background-color: var(--linen);
+}
+
+/* ---------- Buttons: recolor Bootstrap semantics to fit the palette ---------- */
+
+.btn-primary {
+    --bs-btn-bg: var(--clay);
+    --bs-btn-border-color: var(--clay);
+    --bs-btn-hover-bg: var(--ember);
+    --bs-btn-hover-border-color: var(--ember);
+    --bs-btn-active-bg: var(--ember);
+    --bs-btn-active-border-color: var(--ember);
+    --bs-btn-focus-shadow-rgb: 202, 120, 66;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--clay);
+    --bs-btn-border-color: var(--clay);
+    --bs-btn-hover-bg: var(--clay);
+    --bs-btn-hover-border-color: var(--clay);
+    --bs-btn-active-bg: var(--ember);
+    --bs-btn-active-border-color: var(--ember);
+}
+
+.btn-success {
+    --bs-btn-bg: var(--forest);
+    --bs-btn-border-color: var(--forest);
+    --bs-btn-hover-bg: var(--forest-dark);
+    --bs-btn-hover-border-color: var(--forest-dark);
+    --bs-btn-active-bg: var(--forest-dark);
+    --bs-btn-active-border-color: var(--forest-dark);
+}
+
+.btn-outline-success {
+    --bs-btn-color: var(--forest);
+    --bs-btn-border-color: var(--forest);
+    --bs-btn-hover-bg: var(--forest);
+    --bs-btn-hover-border-color: var(--forest);
+}
+
+.btn-danger {
+    --bs-btn-bg: var(--rust);
+    --bs-btn-border-color: var(--rust);
+    --bs-btn-hover-bg: var(--rust-dark);
+    --bs-btn-hover-border-color: var(--rust-dark);
+    --bs-btn-active-bg: var(--rust-dark);
+    --bs-btn-active-border-color: var(--rust-dark);
+}
+
+.btn-secondary {
+    --bs-btn-bg: transparent;
+    --bs-btn-color: var(--ink);
+    --bs-btn-border-color: #C9C2B4;
+    --bs-btn-hover-bg: var(--linen);
+    --bs-btn-hover-color: var(--ink);
+    --bs-btn-hover-border-color: #C9C2B4;
+}
+
+/* ---------- Shared surfaces ---------- */
+
+.card {
+    border: 1px solid #EAE4D8;
+    border-radius: var(--radius);
+}
+
+.card.shadow-sm {
+    box-shadow: 0 2px 10px rgba(63, 79, 68, 0.06) !important;
+}
+
+.table thead {
+    background-color: var(--forest);
+}
+
+.table thead th {
+    color: var(--ember);
+    font-weight: 600;
+    border-color: var(--forest);
+    vertical-align: middle;
+}
+
+.table-hover > tbody > tr:hover > * {
+    background-color: #FBF3EA;
+}
+
+.badge.text-bg-light {
+    background-color: var(--linen) !important;
+    color: var(--ink) !important;
+}
+
+/* ---------- Home page ---------- */
+
+.page-hero {
+    background-color: var(--forest);
+    color: var(--linen);
+    border-radius: var(--radius);
+    padding: 2.75rem 2.5rem;
+}
+
+.page-hero h1 {
+    color: #fff;
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+    color: #C9C2B4;
+    max-width: 46ch;
+    margin-bottom: 0;
+}
+
+.action-tile {
+    display: block;
+    padding: 1.5rem;
+    background-color: #fff;
+    border: 1px solid #EAE4D8;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: border-color 120ms ease;
+}
+
+.action-tile:hover {
+    border-color: var(--ember);
+}
+
+.action-tile .action-tile-icon {
+    font-size: 1.5rem;
+    color: var(--ember);
+}
+
+.action-tile h3 {
+    font-size: 1.15rem;
+    margin: 0.5rem 0 0.25rem;
+}
+
+.action-tile p {
+    color: #5B5B54;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* API reference table */
+
+.api-endpoint {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9rem;
+}
+
+.method-chip {
+    display: inline-block;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin-right: 0.25rem;
+}
+
+.method-get { background-color: #E3EAE5; color: var(--forest-dark); }
+.method-post { background-color: #F1E6DA; color: var(--clay); }
+.method-put { background-color: #FBE9DC; color: var(--ember); }
+.method-delete { background-color: #F3E0DC; color: var(--rust); }
+
+/* ---------- Detail / definition panel ---------- */
+
+.detail-panel dt {
+    color: #7A7A70;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.detail-panel dd {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ---------- Empty states ---------- */
+
+.empty-state {
+    color: #8A8A80;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+
+/* ---------- About / system info ---------- */
+ 
+.version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #fff;
+    border: 1px solid #EAE4D8;
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.9rem;
+}
+ 
+.version-badge .version-label {
+    color: #7A7A70;
+}
+ 
+.version-badge .version-value {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-weight: 600;
+    color: var(--forest-dark);
+}
+ 
+.pkg-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+ 
+.pkg-chip {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.82rem;
+    background-color: var(--linen);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 0.35rem 0.65rem;
+    white-space: nowrap;
+}
+ 
+.pkg-chip .pkg-version {
+    color: var(--clay);
+}

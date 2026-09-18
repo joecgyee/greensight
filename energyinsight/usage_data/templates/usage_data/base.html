@@ -1,38 +1,71 @@
-{% load my_tags %}
-{% include "./header.html" %}
-{% include "./title.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load my_tags %}
+    {% load django_bootstrap5 %}
+    {% load static %}
 
-<div class="container-fluid">
-  <div class="row justify-content-center" id="filters_and_searchbox">
+    <meta charset="UTF-8">
+    <meta name="description" content="Global Renewable Energy Usage (2020-2024)">
+    <meta name="keywords" content="renewable,energy,usage,web,api">
+    <meta name="author" content="Joe C.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     
-    <!-- Filters -->
-    <div class="col-md-4 mt-3">
-      {% energy_sources %}
-    </div>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon_io/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     
-    <div class="col-md-4 mt-3">
-      {% countries %}
-    </div>
+    <title>
+      {% block title %}Greensight{% endblock %}
+    </title>
+  </head>
 
-    <!-- Search Form -->
-    <div class="col-md-8 my-3">
-      <form method="get" action="{% url 'usage_search' %}" class="d-flex">
-        <input type="text" name="q" class="form-control me-2" placeholder="household ID, country, or energy source">
-        <button type="submit" class="btn btn-outline-secondary">Search</button>
-      </form>
-    </div>
+  <body>
 
-  </div>
+    {% include "./navbar.html" %}
 
-    <!-- Main Content -->
-    <div class="row justify-content-center">
-      <div class="col-md-16" id="main_content">
-        {% block content %}
-          <p>Didn't render content</p>
-        {% endblock %}
+    <main id="main_content">
+
+      <div class="container-fluid">
+        <div class="row justify-content-center" id="filters_and_searchbox">
+          
+          <!-- Filters -->
+          <div class="col-md-4 mt-3">
+            {% energy_sources %}
+          </div>
+          
+          <div class="col-md-4 mt-3">
+            {% countries %}
+          </div>
+  
+          <!-- Search Form -->
+          <div class="col-md-8 my-3">
+            <form method="get" action="{% url 'usage_search' %}" class="d-flex">
+              <input type="text" name="q" class="form-control me-2" placeholder="household ID, country, or energy source">
+              <button type="submit" class="btn btn-outline-secondary">Search</button>
+            </form>
+          </div>
+  
+        </div>
+  
+          <!-- Main Content -->
+          <div class="row justify-content-center">
+            <div class="col-md-16" id="main_content">
+              {% block content %}
+                <p>Didn't render content</p>
+              {% endblock %}
+            </div>
+          </div>
+  
       </div>
-    </div>
 
-</div>
+    </main>
 
-{% include "./footer.html" %}
+
+    {% include "./footer.html" %}
+
+  </body>
+</html>

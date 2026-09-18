@@ -10,6 +10,8 @@ from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 from django.db.models import Q
 
+PAGE_SIZE = 50
+
 # SPA entrypoint
 def SPA(request):
     return render(request, 'usage_data/spa.html')
@@ -30,29 +32,35 @@ def admin_credentials(request):
 class UsageDataList(ListView):
     model = RenewableEnergyUsage
     context_object_name = 'master_usagedata'
+    template_name = 'usage_data/list.html'
+    paginate_by = PAGE_SIZE
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_queryset(self):
         country_filter = self.kwargs.get('country')
         source_filter = self.kwargs.get('source')
 
+        qs = RenewableEnergyUsage.objects.select_related(
+            'country', 'energy_source', 'income_level', 'urban_rural'
+        )
+
         if country_filter:
-            context['master_usagedata'] = RenewableEnergyUsage.objects.filter(
+            qs = qs.filter(
                 country__name__iexact=country_filter
             ).order_by('energy_source__name', '-year')
         elif source_filter:
-            context['master_usagedata'] = RenewableEnergyUsage.objects.filter(
+            qs = qs.filter(
                 energy_source__name__iexact=source_filter
             ).order_by('country__name', '-year')
         else:
-            context['master_usagedata'] = RenewableEnergyUsage.objects.all().order_by('country__name', 'energy_source__name', '-year')
+            qs = qs.order_by('country__name', 'energy_source__name', '-year')
 
-        context['selected_country'] = country_filter
-        context['selected_source'] = source_filter
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['selected_country'] = self.kwargs.get('country')
+        context['selected_source'] = self.kwargs.get('source')
         return context
-
-    def get_template_names(self):
-        return 'usage_data/list.html'
 
 # Countries
 def countries(request):
@@ -60,7 +68,7 @@ def countries(request):
         if 'delete_id' in request.POST:
             country_id = request.POST.get('delete_id')
             Country.objects.filter(id=country_id).delete()
-            return HttpResponseRedirect('/countries')  
+            return HttpResponseRedirect('/countries')
         else:
             form = CountryForm(request.POST)
             if form.is_valid():
@@ -99,7 +107,7 @@ class UsageDataDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-    
+
 # DELETE view - usage data
 class UsageDataDelete(DeleteView):
     model = RenewableEnergyUsage
@@ -116,7 +124,7 @@ class UsageDataUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('usage_detail', kwargs={'pk': self.object.pk})
-        
+
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
 
@@ -128,7 +136,7 @@ class UsageDataCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('usage_detail', kwargs={'pk': self.object.pk})
-    
+
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
 
@@ -137,10 +145,13 @@ class UsageSearchView(ListView):
     model = RenewableEnergyUsage
     template_name = 'usage_data/search_results.html'
     context_object_name = 'search_results'
+    paginate_by = PAGE_SIZE
 
     def get_queryset(self):
         query = self.request.GET.get('q', '')
-        return RenewableEnergyUsage.objects.filter(
+        return RenewableEnergyUsage.objects.select_related(
+            'country', 'energy_source', 'income_level', 'urban_rural'
+        ).filter(
             Q(household_id__icontains=query) |
             Q(country__name__icontains=query) |
             Q(energy_source__name__icontains=query)

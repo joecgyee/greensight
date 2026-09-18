@@ -1,0 +1,72 @@
+nav {
+    background-color: var(--forest);
+    color: var(--linen);
+}
+
+#application_title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.nav-link {
+    color: var(--clay);
+    font-size: large;
+    font-weight: bold;
+}
+
+.nav-link:hover,
+footer a:hover {
+    color: var(--ember) !important;
+    text-decoration: none !important;
+}
+
+nav.navbar {
+    padding: 0.65rem 0;
+    /* border-bottom: 3px solid var(--ember); */
+}
+
+#logo {
+    width: auto;
+    object-fit: contain;
+}
+
+#navigation .nav-link {
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+#navigation .nav-link:hover {
+    background-color: rgba(220, 215, 201, 0.08);
+}
+
+#navigation .nav-link.active {
+    color: var(--ember) !important;
+    background-color: rgba(202, 120, 66, 0.12);
+}
+
+.navbar-toggler {
+    border-color: rgba(220, 215, 201, 0.4);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(202, 120, 66, 0.35);
+}
+
+@media (max-width: 767.98px) {
+    #navigation {
+        padding-top: 0.5rem;
+    }
+    #navigation .nav-item {
+        border-top: 1px solid rgba(220, 215, 201, 0.12);
+    }
+    #navigation .nav-link {
+        padding: 0.6rem 0.25rem;
+    }
+}

@@ -1,38 +1,88 @@
 {% extends "./base.html" %}
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+  {{usage_data.household_id}} {{ usage_data.country.name }} ({{ usage_data.energy_source.name }})
+{% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container my-5" style="max-width: 820px;">
 
-  <h1>{{ usage_data }}</h1>
+  <h1 class="mb-4">{{ usage_data }}</h1>
 
-  <table class="table table-bordered">
-    <thead>
-      <tr><th>Field</th><th>Value</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Household ID</td><td>{{ usage_data.household_id }}</td></tr>
-      <tr><td>Country</td><td>{{ usage_data.country.name }}</td></tr>
-      <tr><td>Region</td><td>{{ usage_data.country.region.name }}</td></tr>
-      <tr><td>Energy Source</td><td>{{ usage_data.energy_source.name }}</td></tr>
-      <tr><td>Monthly Usage (kWh)</td><td>{{ usage_data.monthly_usage_kwh }}</td></tr>
-      <tr><td>Year</td><td>{{ usage_data.year }}</td></tr>
-      <tr><td>Household Size</td><td>{{ usage_data.household_size }}</td></tr>
-      <tr><td>Income Level</td><td>{{ usage_data.income_level.level }}</td></tr>
-      <tr><td>Urban/Rural</td><td>{{ usage_data.urban_rural.type }}</td></tr>
-      <tr><td>Adoption Year</td><td>{{ usage_data.adoption_year }}</td></tr>
-      <tr><td>Subsidy Received</td><td>{{ usage_data.subsidy_received }}</td></tr>
-      <tr><td>Cost Savings (USD)</td><td>{{ usage_data.cost_savings_usd }}</td></tr>
-    </tbody>
-  </table>
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+      <dl class="detail-panel row mb-0">
+
+        <div class="col-sm-6">
+          <dt>Household ID</dt>
+          <dd>{{ usage_data.household_id }}</dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Country</dt>
+          <dd>{{ usage_data.country.name }}</dd>
+        </div>
+
+        <div class="col-sm-6">
+          <dt>Region</dt>
+          <dd>{{ usage_data.country.region.name }}</dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Energy Source</dt>
+          <dd><span class="badge text-bg-light border">{{ usage_data.energy_source.name }}</span></dd>
+        </div>
+
+        <div class="col-sm-6">
+          <dt>Monthly Usage</dt>
+          <dd>{{ usage_data.monthly_usage_kwh }} kWh</dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Year</dt>
+          <dd>{{ usage_data.year }}</dd>
+        </div>
+
+        <div class="col-sm-6">
+          <dt>Household Size</dt>
+          <dd>{{ usage_data.household_size }}</dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Income Level</dt>
+          <dd>{{ usage_data.income_level.level }}</dd>
+        </div>
+
+        <div class="col-sm-6">
+          <dt>Urban/Rural</dt>
+          <dd>{{ usage_data.urban_rural.type }}</dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Adoption Year</dt>
+          <dd>{{ usage_data.adoption_year|default:"&mdash;" }}</dd>
+        </div>
+
+        <div class="col-sm-6">
+          <dt>Subsidy Received</dt>
+          <dd>
+            {% if usage_data.subsidy_received %}
+              <span class="badge text-bg-success">Yes</span>
+            {% else %}
+              <span class="badge text-bg-secondary">No</span>
+            {% endif %}
+          </dd>
+        </div>
+        <div class="col-sm-6">
+          <dt>Cost Savings</dt>
+          <dd>${{ usage_data.cost_savings_usd }}</dd>
+        </div>
+
+      </dl>
+    </div>
+  </div>
 
   <div class="d-flex justify-content-end gap-2 mt-4">
-    <a href="{% url 'usage_update' usage_data.pk %}" class="btn btn-primary">UPDATE RECORD</a>
-    <a href="{% url 'usage_delete' usage_data.pk %}" class="btn btn-danger">DELETE RECORD</a>
-    <a href="/" class="btn btn-secondary">CANCEL</a>
+    <a href="{% url 'usage_update' usage_data.pk %}" class="btn btn-primary">Update record</a>
+    <a href="{% url 'usage_delete' usage_data.pk %}" class="btn btn-danger">Delete record</a>
+    <a href="/" class="btn btn-secondary">Cancel</a>
   </div>
-  
+
 </div>
-
-
 {% endblock %}

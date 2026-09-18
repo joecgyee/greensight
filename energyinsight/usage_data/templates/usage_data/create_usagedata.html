@@ -1,22 +1,22 @@
 {% extends "./base.html" %}
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
+
+{% block title %}Create New Usage Data{% endblock %}
 
 {% block content %}
 
-<div class="container my-5">
+<div class="container my-5" style="max-width: 720px;">
     <h2 class="mb-4">Add New Usage Data</h2>
 
     <div class="card shadow-sm border-0">
-        <div class="card-body">
+        <div class="card-body p-4">
             <form action="/usagedata/create/" method="post" class="needs-validation" novalidate>
                 {% csrf_token %}
-
-                <!-- Render form using bootstrap5 -->
                 {% bootstrap_form form layout='vertical' show_label=True %}
 
-                <div class="d-grid mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Add</button>
-                    <a href="/" class="btn btn-secondary btn-lg mt-3">Cancel</a>
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg flex-fill">Add entry</button>
+                    <a href="/" class="btn btn-secondary btn-lg">Cancel</a>
                 </div>
             </form>
         </div>

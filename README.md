@@ -2,6 +2,9 @@
 
 Django app with DRF for global renewable energy usage data.
 
+### Live Demo
+View the live app [here](https://joecgyee.pythonanywhere.com/).
+
 ## Prerequisites
 
 This project is developed with:
